@@ -7,12 +7,13 @@ on:
 
 jobs:
   install_build_and_test:
+    name: Install, Build and Test the app first...
 
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [8.x, 10.x, 12.x]
+        node-version: [12.x]
 
     steps:
     - uses: actions/checkout@v1
@@ -27,5 +28,19 @@ jobs:
         npm test
       env:
         CI: true
+
+  deploy:
+    name: Deploy the app to Production
+    needs: install_build_and_test
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@master
         
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_PROD_TOKEN }}
   
