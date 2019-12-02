@@ -20,7 +20,9 @@ const firebaseProdConfig = {};
 const config =
   process.env.NODE_ENV === "production"
     ? firebaseProdConfig
-    : firebaseDevConfig;
+    : process.env.NODE_ENV === "staging"
+      ? firebaseStagingConfig
+      : firebaseDevConfig;
 
 firebase.initializeApp(config);
 
