@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    name: Build
+    name: Build & Deploy
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -18,14 +18,6 @@ jobs:
       - name: Run Build
         run: npm run build
 
-  deploy:
-    name: Deploy
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@master
-      
       - name: Tell firebase CLI to use Production
         uses: w9jds/firebase-action@master
         with:
