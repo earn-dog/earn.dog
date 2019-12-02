@@ -6,15 +6,23 @@ import {
   Route,
   withRouter
 } from "react-router-dom";
-
-import firebase from "./firebase";
-
-import "./index.css";
+import { createStore } from "redux";
+import { Provider, connect } from "react-redux";
+import { composeWithDevTools } from "redux-devtools-extension";
 
 import Landing from "./components/Landing";
 import Login from "./components/Auth/Login";
+import Spinner from "./components/Spinner";
+
+import firebase from "./firebase";
+import rootReducer from "./reducers";
+import { setUser, clearUser } from "./actions";
+
+import "./index.css";
 
 import * as serviceWorker from "./serviceWorker";
+
+const store = createStore(rootReducer, composeWithDevTools());
 
 class Root extends React.Component {
   componentDidMount() {
@@ -31,7 +39,9 @@ class Root extends React.Component {
   }
 
   render() {
-    return (
+    return this.props.isLoading ? (
+      <Spinner />
+    ) : (
       <Switch>
         <Route exact path="/" component={Landing} />
         <Route path="/login" component={Login} />
@@ -40,12 +50,20 @@ class Root extends React.Component {
   }
 }
 
-const RootWithAuth = withRouter(Root);
+const mapStateToProps = state => ({
+  isLoading: state.user.isLoading
+});
+
+const RootWithAuth = withRouter(
+  connect(mapStateToProps, { setUser, clearUser })(Root)
+);
 
 ReactDOM.render(
-  <Router>
-    <RootWithAuth />
-  </Router>,
+  <Provider store={store}>
+    <Router>
+      <RootWithAuth />
+    </Router>
+  </Provider>,
   document.getElementById("root")
 );
 
