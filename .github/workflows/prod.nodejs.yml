@@ -22,10 +22,8 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-        - name: Firebase GitHub Action
-          uses: pizzafox/firebase-action@1.0.7
-          env:
-            PROJECT_ID: "earn-dog"
-            FIREBASE_TOKEN: ${{ secrets.FIREBASE_PROD_TOKEN }}
-          with:
-            args: deploy
+    - uses: actions/checkout@master
+    - uses: jakejarvis/firebase-deploy-action@master
+      env:
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_PROD_TOKEN }}
+        FIREBASE_PROJECT_ID: earn-dog
