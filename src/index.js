@@ -18,7 +18,7 @@ import firebase from "./firebase";
 import rootReducer from "./reducers";
 import { setUser, clearUser } from "./actions";
 
-import "./index.css";
+import "semantic-ui-css/semantic.min.css";
 
 import * as serviceWorker from "./serviceWorker";
 
