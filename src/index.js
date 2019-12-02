@@ -5,13 +5,15 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./index.css";
 
 import Landing from "./components/Landing";
+import Login from "./components/Auth/Login";
 
 import * as serviceWorker from "./serviceWorker";
 
 const Root = () => (
   <Router>
     <Switch>
-      <Route path="/" component={Landing} />
+      <Route exact path="/" component={Landing} />
+      <Route path="/login" component={Login} />
     </Switch>
   </Router>
 );
