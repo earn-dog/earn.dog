@@ -4,7 +4,7 @@ import "./Landing.css";
 
 const Landing = () => (
   <React.Fragment>
-    <h1>earn.dog dev</h1>
+    <h1>earn.dog</h1>
   </React.Fragment>
 );
 
