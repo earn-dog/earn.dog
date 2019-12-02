@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "earn-dog-dev",
+    "staging": "earn-dog-staging",
+    "dev": "earn-dog-dev",
+    "production": "earn-dog"
+  }
+}
