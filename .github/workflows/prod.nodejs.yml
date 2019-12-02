@@ -1,0 +1,36 @@
+name: Build & Deploy - Prod
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+        
+      - name: Install Dependencies
+        run: npm i
+        
+      - name: Run Build
+        run: npm run build
+
+      - name: Tell firebase CLI to use Production
+        uses: w9jds/firebase-action@master
+        with:
+          args: use earn-dog
+        env: 
+          CI: true 
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_PROD_TOKEN }} 
+          
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting --non-interactive
+        env:
+          CI: true
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_PROD_TOKEN }}
+
