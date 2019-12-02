@@ -40,5 +40,5 @@ jobs:
           args: deploy --only hosting --non-interactive
         env:
           CI: true
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_PROD_TOKEN }}
 
