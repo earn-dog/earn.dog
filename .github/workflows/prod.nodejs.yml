@@ -43,4 +43,5 @@ jobs:
           args: deploy --only hosting:production
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_PROD_TOKEN }}
+          PROJECT_ID: "earn-dog" 
   
