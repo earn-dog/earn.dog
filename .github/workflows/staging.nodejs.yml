@@ -1,8 +1,8 @@
-name: Build & Deploy - Dev
+name: Build & Deploy - Staging
 on:
   push:
     branches:
-      - dev
+      - staging
 
 jobs:
   build:
@@ -18,13 +18,13 @@ jobs:
       - name: Run Build
         run: npm run build
 
-      - name: Tell firebase CLI to use Dev
+      - name: Tell firebase CLI to use Staging
         uses: w9jds/firebase-action@master
         with:
-          args: use earn-dog-dev
+          args: use earn-dog-staging
         env:
           CI: true
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_DEV_TOKEN }}
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_STAGING_TOKEN }}
 
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
@@ -32,4 +32,4 @@ jobs:
           args: deploy --only hosting --non-interactive
         env:
           CI: true
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_DEV_TOKEN }}
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_STAGING_TOKEN }}
