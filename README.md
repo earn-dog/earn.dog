@@ -1,6 +1,6 @@
 # earn.dog
 
-woof...
+woof bark woof...
 
 ## Recommended dev tools
 
