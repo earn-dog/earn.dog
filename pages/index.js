@@ -10,7 +10,7 @@ export default function Index() {
     <Container maxWidth="xl">
       <Box my={4}>
         <Typography variant="h4" component="h1" gutterBottom>
-          earn.dog
+          Dev earn.dog
         </Typography>
         <Button
           variant="contained"
