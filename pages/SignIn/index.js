@@ -19,8 +19,21 @@ export default function SignIn() {
           naked
           href="/"
         >
-          Home
+          {"< Back"}
         </Button>
+
+        <Box my={2} align="center">
+          <Button
+            variant="contained"
+            color="secondary"
+            component={Link}
+            naked
+            href=""
+          >
+            Sign in with Google
+          </Button>
+        </Box>
+
         <Copyright />
       </Box>
     </Container>
