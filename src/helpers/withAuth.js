@@ -2,7 +2,7 @@ import React from "react";
 import router from "next/router";
 import { auth } from "../firebase";
 
-import LoadingIndicator from "../components/LoadingIndicator";
+import { LoadingIndicator } from "../components";
 
 const withAuth = Component => {
   return class extends React.Component {
