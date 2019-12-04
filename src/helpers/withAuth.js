@@ -2,6 +2,8 @@ import React from "react";
 import router from "next/router";
 import { auth } from "../firebase";
 
+import LoadingIndicator from "../components/LoadingIndicator";
+
 const withAuth = Component => {
   return class extends React.Component {
     constructor(props) {
@@ -27,7 +29,7 @@ const withAuth = Component => {
       const { status } = this.state;
 
       if (status == "LOADING") {
-        return <h1>Loading ......</h1>;
+        return <LoadingIndicator />;
       } else if (status == "SIGNED_IN") {
         return <Component {...this.props} />;
       }

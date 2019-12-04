@@ -27,10 +27,9 @@ const Profile = props => {
           >
             Home
           </Button>
-
-          <Copyright />
         </Box>
       </Container>
+      <Copyright />
     </React.Fragment>
   );
 };
