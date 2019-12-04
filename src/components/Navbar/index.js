@@ -11,7 +11,6 @@ import {
   Menu
 } from "@material-ui/core";
 
-import MenuIcon from "@material-ui/icons/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import Link from "../Link";
 
@@ -24,6 +23,9 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     flexGrow: 1
+  },
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1
   }
 }));
 
@@ -53,17 +55,9 @@ export default function Navbar({ pageTitle, currentUser }) {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
+          <Typography variant="h6" className={classes.title} noWrap>
             {pageTitle}
           </Typography>
           {currentUser && (

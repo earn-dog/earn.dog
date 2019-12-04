@@ -10,7 +10,7 @@ import Copyright from "../../src/components/Copyright";
 const Profile = ({ currentUser }) => {
   return (
     <React.Fragment>
-      <Navbar pageTitle={"Profile"} currentUser={currentUser} />
+      <Navbar pageTitle="Profile" currentUser={currentUser} />
 
       <Container maxWidth="xl">
         <Box my={4}>
