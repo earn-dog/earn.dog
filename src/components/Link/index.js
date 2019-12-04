@@ -32,6 +32,7 @@ function Link(props) {
     naked,
     ...other
   } = props;
+
   const router = useRouter();
 
   const className = clsx(classNameProps, {

@@ -33,6 +33,7 @@ export default function Navbar(props) {
   const [auth, setAuth] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const { pageTitle } = props;
 
   const handleChange = event => {
     setAuth(event.target.checked);
@@ -46,7 +47,6 @@ export default function Navbar(props) {
     setAnchorEl(null);
   };
 
-  const { pageTitle } = props;
   return (
     <div className={classes.root}>
       <FormGroup>
