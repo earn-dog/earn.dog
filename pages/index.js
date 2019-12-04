@@ -2,10 +2,8 @@ import React from "react";
 
 import { Container, Typography, Box, Button } from "@material-ui/core";
 
-import Link from "../src/components/Link";
-import Copyright from "../src/components/Copyright";
-import Navbar from "../src/components/Navbar";
-import Sidebar from "../src/components/Sidebar";
+import { Copyright, Link, Navbar, Sidebar } from "../src/components";
+
 
 export default function Index() {
   return (
