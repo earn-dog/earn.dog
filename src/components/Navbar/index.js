@@ -96,7 +96,9 @@ export default function Navbar(props) {
                 <MenuItem component={Link} href="/profile">
                   Profile
                 </MenuItem>
-                <MenuItem onClick={handleSignOut}>Sign Out</MenuItem>
+                <MenuItem onClick={handleSignOut} component={Link} href="/">
+                  Sign Out
+                </MenuItem>
               </Menu>
             </div>
           )}
