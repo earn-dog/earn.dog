@@ -27,11 +27,10 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Navbar(props) {
+export default function Navbar({ pageTitle, currentUser }) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  const { pageTitle, currentUser } = props;
 
   const handleMenu = event => {
     setAnchorEl(event.currentTarget);

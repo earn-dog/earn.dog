@@ -7,8 +7,7 @@ import Navbar from "../../src/components/Navbar";
 import Link from "../../src/components/Link";
 import Copyright from "../../src/components/Copyright";
 
-const Profile = props => {
-  const { currentUser } = props;
+const Profile = ({ currentUser }) => {
   return (
     <React.Fragment>
       <Navbar pageTitle={"Profile"} currentUser={currentUser} />
