@@ -17,30 +17,13 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 
 class Navbar extends React.Component {
   state = {
-    auth: true,
-    anchorEl: null,
-    setAnchorEl: ""
-  };
-
-  handleChange = e => {
-    this.setState({ auth: e.target.checked });
-  };
-
-  handleClose = () => {
-    this.setState({ anchorEl: null });
-  };
-
-  handleProfileIconOpen = e => {
-    this.setState({ setAnchorEl: e.currentTarget });
-  };
-
-  handleProfileIconClose = () => {
-    this.setState({ setAnchorEl: null });
+    auth: false,
+    anchorEl: null
   };
 
   render() {
     const { pageTitle } = this.props;
-    const { auth, anchorEl, openProfileIcon, setAnchorEl } = this.state;
+    const { auth, anchorEl } = this.state;
 
     return (
       <div style={{ flexGrow: 1 }}>
@@ -49,7 +32,7 @@ class Navbar extends React.Component {
             control={
               <Switch
                 checked={auth}
-                onChange={this.handleChange}
+                onChange={e => this.setState({ auth: e.target.checked })}
                 aria-label="login switch"
               />
             }
@@ -75,7 +58,7 @@ class Navbar extends React.Component {
                   aria-label="account of current user"
                   aria-controls="menu-appbar"
                   aria-haspopup="true"
-                  onClick={this.handleProfileIconOpen}
+                  onClick={e => this.setState({ anchorEl: e.currentTarget })}
                   color="inherit"
                 >
                   <AccountCircle />
@@ -92,13 +75,13 @@ class Navbar extends React.Component {
                     vertical: "top",
                     horizontal: "right"
                   }}
-                  open={openProfileIcon}
-                  onClose={this.handleProfileIconClose}
+                  open={anchorEl ? true : false}
+                  onClose={e => this.setState({ anchorEl: null })}
                 >
-                  <MenuItem onClick={this.handleProfileIconClose}>
+                  <MenuItem onClick={e => this.setState({ anchorEl: null })}>
                     Profile
                   </MenuItem>
-                  <MenuItem onClick={this.handleProfileIconClose}>
+                  <MenuItem onClick={e => this.setState({ anchorEl: null })}>
                     My account
                   </MenuItem>
                 </Menu>
