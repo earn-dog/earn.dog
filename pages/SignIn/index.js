@@ -7,6 +7,7 @@ import Copyright from "../../src/components/Copyright";
 import Navbar from "../../src/components/Navbar";
 
 import { auth, firebase } from "../../src/firebase";
+import { userInfo } from "os";
 
 export default function SignIn() {
   const handleSignIn = () => {
@@ -17,9 +18,10 @@ export default function SignIn() {
 
     auth
       .signInWithPopup(provider)
-      .then(signedInUser => {
+      .then(userObject => {
+        const { user } = userObject;
         console.log("Successfully signed in");
-        console.log(`\nUser: ${signedInUser}`);
+        console.log(user);
       })
       .catch(err => {
         console.error(err);

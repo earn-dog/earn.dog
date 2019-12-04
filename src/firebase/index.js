@@ -16,5 +16,6 @@ if (!firebase.apps.length) {
 }
 
 const auth = firebase.auth();
+firebase.auth().useDeviceLanguage();
 
 export { auth, firebase };
