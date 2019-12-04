@@ -7,9 +7,10 @@ import Copyright from "../../src/components/Copyright";
 import Navbar from "../../src/components/Navbar";
 
 import { auth, firebase } from "../../src/firebase";
-import { userInfo } from "os";
 
 export default function SignIn() {
+  const [currentUser, setUser] = React.useState(null);
+
   const handleSignIn = () => {
     var provider = new firebase.auth.GoogleAuthProvider();
 
@@ -22,17 +23,8 @@ export default function SignIn() {
         const { user } = userObject;
         console.log("Successfully signed in");
         console.log(user);
-      })
-      .catch(err => {
-        console.error(err);
-      });
-  };
 
-  const handleLogout = () => {
-    auth
-      .signOut()
-      .then(() => {
-        console.log("Logged out");
+        setUser(user);
       })
       .catch(err => {
         console.error(err);
@@ -41,7 +33,7 @@ export default function SignIn() {
 
   return (
     <React.Fragment>
-      <Navbar pageTitle={"Sign In"} />
+      <Navbar pageTitle={"Sign In"} currentUser={currentUser} />
       <Container maxWidth="xl">
         <Box my={4}>
           <Typography variant="h4" component="h1" gutterBottom>

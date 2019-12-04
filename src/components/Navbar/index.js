@@ -1,20 +1,19 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import { auth } from "../../firebase";
 
 import {
   AppBar,
   Toolbar,
   Typography,
   IconButton,
-  Switch,
-  FormControlLabel,
-  FormGroup,
   MenuItem,
   Menu
 } from "@material-ui/core";
 
 import MenuIcon from "@material-ui/icons/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
+import Link from "../Link";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -30,14 +29,9 @@ const useStyles = makeStyles(theme => ({
 
 export default function Navbar(props) {
   const classes = useStyles();
-  const [auth, setAuth] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  const { pageTitle } = props;
-
-  const handleChange = event => {
-    setAuth(event.target.checked);
-  };
+  const { pageTitle, currentUser } = props;
 
   const handleMenu = event => {
     setAnchorEl(event.currentTarget);
@@ -47,20 +41,19 @@ export default function Navbar(props) {
     setAnchorEl(null);
   };
 
+  const handleSignOut = () => {
+    auth
+      .signOut()
+      .then(() => {
+        console.log("Logged out");
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  };
+
   return (
     <div className={classes.root}>
-      <FormGroup>
-        <FormControlLabel
-          control={
-            <Switch
-              checked={auth}
-              onChange={handleChange}
-              aria-label="login switch"
-            />
-          }
-          label={auth ? "Logout" : "Login"}
-        />
-      </FormGroup>
       <AppBar position="static">
         <Toolbar>
           <IconButton
@@ -74,7 +67,7 @@ export default function Navbar(props) {
           <Typography variant="h6" className={classes.title}>
             {pageTitle}
           </Typography>
-          {auth && (
+          {currentUser && (
             <div>
               <IconButton
                 aria-label="account of current user"
@@ -100,8 +93,10 @@ export default function Navbar(props) {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem component={Link} href="/profile">
+                  Profile
+                </MenuItem>
+                <MenuItem onClick={handleSignOut}>Sign Out</MenuItem>
               </Menu>
             </div>
           )}
