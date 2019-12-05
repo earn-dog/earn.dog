@@ -1,11 +1,13 @@
 {
-  "env": {
-    "FIREBASE_API_KEY": "@firebase_api_key_dev",
-    "FIREBASE_AUTH_DOMAIN": "@firebase_auth_domain_dev",
-    "FIREBASE_DATABASE_URL": "@firebase_database_url_dev",
-    "FIREBASE_PROJECT_ID": "@firebase_project_id_dev",
-    "FIREBASE_STORAGE_BUCKET": "@firebase_storage_bucket_dev",
-    "FIREBASE_MESSAGING_SENDER_ID": "@firebase_messaging_sender_id_dev",
-    "FIREBASE_APP_ID": "@firebase_app_id_dev"
+  "build": {
+    "env": {
+      "FIREBASE_API_KEY": "@firebase_api_key_dev",
+      "FIREBASE_AUTH_DOMAIN": "@firebase_auth_domain_dev",
+      "FIREBASE_DATABASE_URL": "@firebase_database_url_dev",
+      "FIREBASE_PROJECT_ID": "@firebase_project_id_dev",
+      "FIREBASE_STORAGE_BUCKET": "@firebase_storage_bucket_dev",
+      "FIREBASE_MESSAGING_SENDER_ID": "@firebase_messaging_sender_id_dev",
+      "FIREBASE_APP_ID": "@firebase_app_id_dev"
+    }
   }
 }
