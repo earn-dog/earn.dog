@@ -1,42 +1,20 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 
 import {
   AppBar,
   Toolbar,
   Typography,
   IconButton,
-  Switch,
-  FormControlLabel,
-  FormGroup,
   MenuItem,
   Menu
 } from "@material-ui/core";
 
-import MenuIcon from "@material-ui/icons/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1
-  },
-  menuButton: {
-    marginRight: theme.spacing(2)
-  },
-  title: {
-    flexGrow: 1
-  }
-}));
-
 export default function Navbar(props) {
-  const classes = useStyles();
   const [auth, setAuth] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-
-  const handleChange = event => {
-    setAuth(event.target.checked);
-  };
 
   const handleMenu = event => {
     setAnchorEl(event.currentTarget);
@@ -46,32 +24,12 @@ export default function Navbar(props) {
     setAnchorEl(null);
   };
 
-  const { pageTitle } = props;
+  const { pageTitle, parentClasses } = props;
   return (
-    <div className={classes.root}>
-      <FormGroup>
-        <FormControlLabel
-          control={
-            <Switch
-              checked={auth}
-              onChange={handleChange}
-              aria-label="login switch"
-            />
-          }
-          label={auth ? "Logout" : "Login"}
-        />
-      </FormGroup>
-      <AppBar position="static">
+    <React.Fragment>
+      <AppBar position="fixed" className={parentClasses.appBar}>
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
+          <Typography variant="h6" className={parentClasses.title}>
             {pageTitle}
           </Typography>
           {auth && (
@@ -107,6 +65,6 @@ export default function Navbar(props) {
           )}
         </Toolbar>
       </AppBar>
-    </div>
+    </React.Fragment>
   );
 }

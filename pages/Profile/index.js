@@ -3,15 +3,12 @@ import withAuth from "../../src/helpers/withAuth";
 
 import { Container, Typography, Box, Button } from "@material-ui/core";
 
-import Navbar from "../../src/components/Navbar";
 import Link from "../../src/components/Link";
 import Copyright from "../../src/components/Copyright";
 
 const Profile = ({ currentUser }) => {
   return (
     <React.Fragment>
-      <Navbar pageTitle="Profile" currentUser={currentUser} />
-
       <Container maxWidth="xl">
         <Box my={4}>
           <Typography variant="h4" component="h1" gutterBottom>

@@ -2,7 +2,7 @@ import React from "react";
 
 import { Container, Typography, Box, Button } from "@material-ui/core";
 
-import { Copyright, Link, Navbar } from "../../src/components";
+import { Copyright, Link } from "../../src/components";
 
 import { auth, firebase } from "../../src/firebase";
 
@@ -31,7 +31,6 @@ export default function SignIn() {
 
   return (
     <React.Fragment>
-      <Navbar pageTitle="Sign In" currentUser={currentUser} />
 
       <Container maxWidth="xl">
         <Box my={4}>
