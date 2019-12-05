@@ -6,6 +6,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
 import theme from "../src/theme";
+import { Shell } from "../src/components";
 
 export default class MyApp extends App {
   componentDidMount() {
@@ -24,10 +25,13 @@ export default class MyApp extends App {
         <Head>
           <title>earn.dog</title>
         </Head>
+
         <ThemeProvider theme={theme}>
           {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-          <CssBaseline />
-          <Component {...pageProps} />
+          <Shell>
+            <CssBaseline />
+            <Component {...pageProps} />
+          </Shell>
         </ThemeProvider>
       </React.Fragment>
     );

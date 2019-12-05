@@ -2,12 +2,36 @@ import React from "react";
 
 import { Container, Typography, Box, Button } from "@material-ui/core";
 
-import { Copyright, Link, Navbar } from "../../src/components";
+import { Copyright, Link } from "../../src/components";
+
+import { auth, firebase } from "../../src/firebase";
 
 export default function SignIn() {
+  const [currentUser, setUser] = React.useState(null);
+
+  const handleSignIn = () => {
+    var provider = new firebase.auth.GoogleAuthProvider();
+
+    provider.addScope("profile");
+    provider.addScope("email");
+
+    auth
+      .signInWithPopup(provider)
+      .then(userObject => {
+        const { user } = userObject;
+        console.log("Successfully signed in");
+        console.log(user);
+
+        setUser(user);
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  };
+
   return (
     <React.Fragment>
-      <Navbar pageTitle="Sign In" />
+
       <Container maxWidth="xl">
         <Box my={4}>
           <Typography variant="h4" component="h1" gutterBottom>
@@ -30,6 +54,7 @@ export default function SignIn() {
               component={Link}
               naked
               href=""
+              onClick={handleSignIn}
             >
               Sign in with Google
             </Button>
