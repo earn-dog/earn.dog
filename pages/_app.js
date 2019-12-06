@@ -21,7 +21,7 @@ export default class MyApp extends App {
     const { Component, pageProps } = this.props;
 
     return (
-      <React.Fragment>
+      <>
         <Head>
           <title>earn.dog</title>
         </Head>
@@ -33,7 +33,7 @@ export default class MyApp extends App {
             <Component {...pageProps} />
           </Shell>
         </ThemeProvider>
-      </React.Fragment>
+      </>
     );
   }
 }
