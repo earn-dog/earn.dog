@@ -6,9 +6,9 @@ import { Copyright, Link } from "../src/components";
 
 export default function Index() {
   return (
-    <React.Fragment>
+    <>
       <main>
-        <Container maxWidth="lg">
+        <Container maxWidth="xl">
           <Box my={4}>
             <Typography variant="h4" component="h1" gutterBottom>
               Dev earn.dog
@@ -26,6 +26,6 @@ export default function Index() {
           </Box>
         </Container>
       </main>
-    </React.Fragment>
+    </>
   );
 }
