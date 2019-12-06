@@ -6,7 +6,7 @@ import { Copyright, Link } from "../src/components";
 
 export default function Index() {
   return (
-    <React.Fragment>
+    <>
       <main>
         <Container maxWidth="lg">
           <Box my={4}>
@@ -26,6 +26,6 @@ export default function Index() {
           </Box>
         </Container>
       </main>
-    </React.Fragment>
+    </>
   );
 }

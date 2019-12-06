@@ -34,7 +34,7 @@ const withAuth = Component => {
     }
 
     render() {
-      return <React.Fragment>{this.renderContent()}</React.Fragment>;
+      return <>{this.renderContent()}</>;
     }
   };
 };

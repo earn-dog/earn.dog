@@ -30,7 +30,7 @@ export default function SignIn() {
   };
 
   return (
-    <React.Fragment>
+    <>
 
       <Container maxWidth="xl">
         <Box my={4}>
@@ -63,6 +63,6 @@ export default function SignIn() {
           <Copyright />
         </Box>
       </Container>
-    </React.Fragment>
+    </>
   );
 }
