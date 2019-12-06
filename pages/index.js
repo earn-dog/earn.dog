@@ -8,7 +8,7 @@ export default function Index() {
   return (
     <>
       <main>
-        <Container maxWidth="lg">
+        <Container maxWidth="xl">
           <Box my={4}>
             <Typography variant="h4" component="h1" gutterBottom>
               Dev earn.dog
