@@ -11,6 +11,8 @@ import {
 
 import AccountCircle from "@material-ui/icons/AccountCircle";
 
+import { removeUser } from "../../helpers/authWrapper";
+
 export default function Navbar(props) {
   const [auth, setAuth] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -22,6 +24,11 @@ export default function Navbar(props) {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleSignOut = () => {
+    setAnchorEl(null);
+    removeUser();
   };
 
   const { pageTitle, parentClasses } = props;
@@ -59,7 +66,7 @@ export default function Navbar(props) {
                 onClose={handleClose}
               >
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleSignOut}>Sign Out</MenuItem>
               </Menu>
             </div>
           )}

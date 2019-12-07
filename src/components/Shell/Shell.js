@@ -17,6 +17,7 @@ import Link from "../Link";
 import Navbar from "../Navbar";
 
 import { auth } from "../../firebase";
+import { removeUser } from "../../helpers/authWrapper";
 
 const drawerWidth = 180;
 
@@ -52,6 +53,7 @@ export default function Shell({ children }) {
       .signOut()
       .then(() => {
         console.log("Logged out");
+        removeUser();
       })
       .catch(err => {
         console.error(err);

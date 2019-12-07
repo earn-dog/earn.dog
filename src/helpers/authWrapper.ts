@@ -7,11 +7,17 @@ const storeUser = (user: User): void => {
 const retrieveUser = (): User | string => {
   const stringifiedUser = localStorage.getItem("currentUser");
 
-  if (stringifiedUser === null) {
+  if (stringifiedUser === null || stringifiedUser === undefined) {
     return "No user found";
   }
 
   return JSON.parse(stringifiedUser);
 };
 
-export { storeUser, retrieveUser };
+const removeUser = (): void => {
+  if (localStorage.getItem("currentUser") !== null) {
+    localStorage.removeItem("currentUser");
+  }
+};
+
+export { storeUser, retrieveUser, removeUser };
