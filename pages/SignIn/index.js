@@ -23,6 +23,8 @@ export default function SignIn() {
         console.log(user);
 
         setUser(user);
+
+        localStorage.setItem( user );
       })
       .catch(err => {
         console.error(err);
@@ -31,7 +33,6 @@ export default function SignIn() {
 
   return (
     <>
-
       <Container maxWidth="xl">
         <Box my={4}>
           <Typography variant="h4" component="h1" gutterBottom>

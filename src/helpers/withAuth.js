@@ -18,6 +18,8 @@ const withAuth = Component => {
           this.setState({
             status: "SIGNED_IN"
           });
+
+          
         } else {
           router.push("/");
         }
