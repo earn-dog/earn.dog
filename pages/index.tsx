@@ -2,7 +2,7 @@ import React from "react";
 
 import { Container, Typography, Box, Button } from "@material-ui/core";
 
-import { Copyright, Link } from "../src/components";
+import { Copyright } from "../src/components";
 
 export default function Index() {
   return (
@@ -13,13 +13,7 @@ export default function Index() {
             <Typography variant="h4" component="h1" gutterBottom>
               Dev earn.dog
             </Typography>
-            <Button
-              variant="contained"
-              color="primary"
-              component={Link}
-              naked
-              href="/signin"
-            >
+            <Button variant="contained" color="primary" href="/signin">
               Sign In
             </Button>
             <Copyright />
