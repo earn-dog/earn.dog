@@ -4,10 +4,14 @@ const storeUser = (user: User): void => {
   localStorage.setItem("currentUser", JSON.stringify(user));
 };
 
-const retrieveUser = (): User => {
+const retrieveUser = (): User | string => {
   const stringifiedUser = localStorage.getItem("currentUser");
 
-  return JSON.parse(stringifiedUser || "");
+  if (stringifiedUser === null) {
+    return "No user found";
+  }
+
+  return JSON.parse(stringifiedUser);
 };
 
 export { storeUser, retrieveUser };

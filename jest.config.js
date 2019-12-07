@@ -1,3 +1,6 @@
 module.exports = {
-  preset: "ts-jest"
+  preset: "ts-jest",
+  transform: {
+    "^.+\\.tsx?$": "ts-jest"
+  }
 };

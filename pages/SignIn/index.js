@@ -1,10 +1,8 @@
 import React from "react";
-
 import { Container, Typography, Box, Button } from "@material-ui/core";
-
 import { Copyright, Link } from "../../src/components";
-
 import { auth, firebase } from "../../src/firebase";
+import { storeUser } from "../../src/helpers/authWrapper";
 
 export default function SignIn() {
   const [currentUser, setUser] = React.useState(null);
@@ -22,9 +20,7 @@ export default function SignIn() {
         console.log("Successfully signed in");
         console.log(user);
 
-        setUser(user);
-
-        localStorage.setItem( user );
+        storeUser(user);
       })
       .catch(err => {
         console.error(err);
