@@ -1,25 +1,14 @@
 import React from "react";
 
-import { Container, Typography, Box, Button } from "@material-ui/core";
+import { AppWithAuthentication } from "../src/components/App";
 
-import { Copyright } from "../src/components";
-
-export default function Index() {
-  return (
-    <>
-      <main>
-        <Container maxWidth="xl">
-          <Box my={4}>
-            <Typography variant="h4" component="h1" gutterBottom>
-              Dev earn.dog
-            </Typography>
-            <Button variant="contained" color="primary" href="/signin">
-              Sign In
-            </Button>
-            <Copyright />
-          </Box>
-        </Container>
-      </main>
-    </>
-  );
-}
+const LandingPage = () => (
+  <AppWithAuthentication>
+    <h1>Landing</h1>
+    <p>
+      The Landing Page is open to everyone, even though the user isn't signed
+      in.
+    </p>
+  </AppWithAuthentication>
+);
+export default LandingPage;
