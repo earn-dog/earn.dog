@@ -6,7 +6,8 @@ import {
   Typography,
   IconButton,
   MenuItem,
-  Menu
+  Menu,
+  Link
 } from "@material-ui/core";
 import { connect } from "react-redux";
 
@@ -27,15 +28,23 @@ const Navbar = ({ pageTitle, parentClasses, authUser }) => {
     setAnchorEl(null);
   };
 
-  const handleGoToProfile = () => {
+  const handleGoToProfilePage = () => {
     Router.push(routes.PROFILE);
+  };
+
+  const handleGoToHomePage = () => {
+    Router.push(routes.HOME);
   };
 
   return (
     <React.Fragment>
       <AppBar position="fixed" className={parentClasses.appBar}>
         <Toolbar>
-          <Typography variant="h6" className={parentClasses.title}>
+          <Typography
+            variant="h6"
+            className={parentClasses.title}
+            onClick={handleGoToHomePage}
+          >
             {pageTitle}
           </Typography>
           {authUser && (
@@ -64,7 +73,7 @@ const Navbar = ({ pageTitle, parentClasses, authUser }) => {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleGoToProfile}>Profile</MenuItem>
+                <MenuItem onClick={handleGoToProfilePage}>Profile</MenuItem>
                 <MenuItem onClick={() => auth.signOut()}>Sign Out</MenuItem>
               </Menu>
             </>
