@@ -53,6 +53,14 @@ const Shell = ({ children, authUser }) => {
     Router.push(routes.EARN);
   };
 
+  const handleGoToSignInPage = () => {
+    Router.push(routes.SIGN_IN);
+  };
+
+  const handleGoToProfilePage = () => {
+    Router.push(routes.PROFILE);
+  };
+
   return (
     <div className={classes.root}>
       <Navbar pageTitle="earn.dog" parentClasses={classes} />
@@ -83,7 +91,12 @@ const Shell = ({ children, authUser }) => {
         <Divider />
         {!authUser && (
           <List>
-            <ListItem button key="Sign In" href="/signin">
+            <ListItem
+              button
+              key="Sign In"
+              href="/signin"
+              onClick={handleGoToSignInPage}
+            >
               <ListItemIcon>
                 <VpnKeyRoundedIcon />
               </ListItemIcon>
@@ -94,7 +107,12 @@ const Shell = ({ children, authUser }) => {
 
         {authUser && (
           <List>
-            <ListItem button key="Profile" href="/profile">
+            <ListItem
+              button
+              key="Profile"
+              href="/profile"
+              onClick={handleGoToProfilePage}
+            >
               <ListItemIcon>
                 <AccountBoxRoundedIcon />
               </ListItemIcon>
