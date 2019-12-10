@@ -41,8 +41,7 @@ export default function ImgMediaCard() {
             Hideout.tv
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Earn points by watching videos. Redeem these points to earn.dog for
-            your rewards!
+            Earn points by watching videos. Redeem these for earn.dog coins!
           </Typography>
         </CardContent>
       </CardActionArea>
