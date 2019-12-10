@@ -6,17 +6,17 @@ import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-
+import Link from "@material-ui/core/Link";
+import { connect } from "react-redux";
 import MonetizationOnOutlinedIcon from "@material-ui/icons/MonetizationOnOutlined";
 import AccountBalanceWalletRoundedIcon from "@material-ui/icons/AccountBalanceWalletRounded";
 import AccountBoxRoundedIcon from "@material-ui/icons/AccountBoxRounded";
 
 import VpnKeyRoundedIcon from "@material-ui/icons/VpnKeyRounded";
 import ExitToAppRoundedIcon from "@material-ui/icons/ExitToAppRounded";
-import Link from "../Link";
 import Navbar from "../Navbar";
 
-import { auth } from "../../firebase";
+import { auth } from "../../firebase/firebase";
 
 const drawerWidth = 180;
 
@@ -44,19 +44,8 @@ const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar
 }));
 
-export default function Shell({ children }) {
+const Shell = ({ children, authUser }) => {
   const classes = useStyles();
-
-  const handleSignOut = () => {
-    auth
-      .signOut()
-      .then(() => {
-        console.log("Logged out");
-      })
-      .catch(err => {
-        console.error(err);
-      });
-  };
 
   return (
     <div className={classes.root}>
@@ -86,29 +75,34 @@ export default function Shell({ children }) {
         </List>
 
         <Divider />
+        {!authUser && (
+          <List>
+            <ListItem button key="Log In" component={Link} href="/signin">
+              <ListItemIcon>
+                <VpnKeyRoundedIcon />
+              </ListItemIcon>
+              <ListItemText primary="Log In" />
+            </ListItem>
+          </List>
+        )}
 
-        <List>
-          <ListItem button key="Log In" component={Link} href="/signin">
-            <ListItemIcon>
-              <VpnKeyRoundedIcon />
-            </ListItemIcon>
-            <ListItemText primary="Log In" />
-          </ListItem>
+        {authUser && (
+          <List>
+            <ListItem button key="Profile" component={Link} href="/account">
+              <ListItemIcon>
+                <AccountBoxRoundedIcon />
+              </ListItemIcon>
+              <ListItemText primary="Profile" />
+            </ListItem>
 
-          <ListItem button key="Profile" component={Link} href="/profile">
-            <ListItemIcon>
-              <AccountBoxRoundedIcon />
-            </ListItemIcon>
-            <ListItemText primary="Profile" />
-          </ListItem>
-
-          <ListItem button key="Sign Out" onClick={handleSignOut}>
-            <ListItemIcon>
-              <ExitToAppRoundedIcon />
-            </ListItemIcon>
-            <ListItemText primary="Sign Out" />
-          </ListItem>
-        </List>
+            <ListItem button key="Sign Out" onClick={() => auth.signOut()}>
+              <ListItemIcon>
+                <ExitToAppRoundedIcon />
+              </ListItemIcon>
+              <ListItemText primary="Sign Out" />
+            </ListItem>
+          </List>
+        )}
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
@@ -116,4 +110,10 @@ export default function Shell({ children }) {
       </main>
     </div>
   );
-}
+};
+
+const mapStateToProps = state => ({
+  authUser: state.sessionState.authUser
+});
+
+export default connect(mapStateToProps)(Shell);

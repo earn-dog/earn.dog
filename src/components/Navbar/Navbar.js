@@ -26,7 +26,7 @@ export default function Navbar(props) {
 
   const { pageTitle, parentClasses } = props;
   return (
-    <>
+    <React.Fragment>
       <AppBar position="fixed" className={parentClasses.appBar}>
         <Toolbar>
           <Typography variant="h6" className={parentClasses.title}>
@@ -65,6 +65,6 @@ export default function Navbar(props) {
           )}
         </Toolbar>
       </AppBar>
-    </>
+    </React.Fragment>
   );
 }
