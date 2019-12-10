@@ -11,6 +11,8 @@ import withRedux from "next-redux-wrapper";
 import initStore from "../src/store";
 import theme from "../src/theme";
 
+import Shell from "../src/components/Shell";
+
 class EnhancedApp extends App {
   static async getInitialProps({ Component, ctx }) {
     return {
@@ -49,7 +51,9 @@ class EnhancedApp extends App {
           <ThemeProvider theme={theme}>
             {this.renderHead()}
             <CssBaseline />
-            <Component {...pageProps} />
+            <Shell>
+              <Component {...pageProps} />
+            </Shell>
           </ThemeProvider>
         </Provider>
       </>

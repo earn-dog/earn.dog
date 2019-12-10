@@ -1,13 +1,12 @@
 import React from "react";
 import { compose } from "recompose";
 
-import Shell from "../Shell";
 import withAuthentication from "../Session/withAuthentication";
 import withAuthorisation from "../Session/withAuthorisation";
 
 const App = ({ children }) => (
   <div className="app">
-    <Shell>{children}</Shell>
+    {children}
   </div>
 );
 
