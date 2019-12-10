@@ -8,23 +8,29 @@ import {
   MenuItem,
   Menu
 } from "@material-ui/core";
+import { connect } from "react-redux";
 
 import AccountCircle from "@material-ui/icons/AccountCircle";
+import { auth } from "../../firebase/firebase";
+import Router from "next/router";
+import * as routes from "../../constants/routes";
 
-export default function Navbar(props) {
-  const [auth, setAuth] = React.useState(false);
+const Navbar = ({ pageTitle, parentClasses, authUser }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
-  const handleMenu = event => {
-    setAnchorEl(event.currentTarget);
+  const handleMenu = e => {
+    setAnchorEl(e.currentTarget);
   };
 
   const handleClose = () => {
     setAnchorEl(null);
   };
 
-  const { pageTitle, parentClasses } = props;
+  const handleGoToProfile = () => {
+    Router.push(routes.PROFILE);
+  };
+
   return (
     <React.Fragment>
       <AppBar position="fixed" className={parentClasses.appBar}>
@@ -32,8 +38,8 @@ export default function Navbar(props) {
           <Typography variant="h6" className={parentClasses.title}>
             {pageTitle}
           </Typography>
-          {auth && (
-            <div>
+          {authUser && (
+            <>
               <IconButton
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
@@ -58,13 +64,19 @@ export default function Navbar(props) {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleGoToProfile}>Profile</MenuItem>
+                <MenuItem onClick={() => auth.signOut()}>Sign Out</MenuItem>
               </Menu>
-            </div>
+            </>
           )}
         </Toolbar>
       </AppBar>
     </React.Fragment>
   );
-}
+};
+
+const mapStateToProps = state => ({
+  authUser: state.sessionState.authUser
+});
+
+export default connect(mapStateToProps)(Navbar);

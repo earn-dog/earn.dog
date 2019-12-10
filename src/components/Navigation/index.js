@@ -22,8 +22,8 @@ const NavigationAuth = () => (
       </Link>
     </li>
     <li>
-      <Link href={routes.ACCOUNT}>
-        <a>Account</a>
+      <Link href={routes.PROFILE}>
+        <a>Profile</a>
       </Link>
     </li>
     <li>

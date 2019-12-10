@@ -49,7 +49,7 @@ const Shell = ({ children, authUser }) => {
 
   return (
     <div className={classes.root}>
-      <Navbar pageTitle="Home" parentClasses={classes} />
+      <Navbar pageTitle="earn.dog" parentClasses={classes} />
       <Drawer
         className={classes.drawer}
         variant="permanent"
@@ -88,7 +88,7 @@ const Shell = ({ children, authUser }) => {
 
         {authUser && (
           <List>
-            <ListItem button key="Profile" component={Link} href="/account">
+            <ListItem button key="Profile" component={Link} href="/profile">
               <ListItemIcon>
                 <AccountBoxRoundedIcon />
               </ListItemIcon>
