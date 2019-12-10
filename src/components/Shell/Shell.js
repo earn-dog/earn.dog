@@ -6,7 +6,6 @@ import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import Link from "@material-ui/core/Link";
 import { connect } from "react-redux";
 import MonetizationOnOutlinedIcon from "@material-ui/icons/MonetizationOnOutlined";
 import AccountBalanceWalletRoundedIcon from "@material-ui/icons/AccountBalanceWalletRounded";
@@ -15,6 +14,9 @@ import AccountBoxRoundedIcon from "@material-ui/icons/AccountBoxRounded";
 import VpnKeyRoundedIcon from "@material-ui/icons/VpnKeyRounded";
 import ExitToAppRoundedIcon from "@material-ui/icons/ExitToAppRounded";
 import Navbar from "../Navbar";
+
+import Router from "next/router";
+import * as routes from "../../constants/routes";
 
 import { auth } from "../../firebase/firebase";
 
@@ -47,6 +49,10 @@ const useStyles = makeStyles(theme => ({
 const Shell = ({ children, authUser }) => {
   const classes = useStyles();
 
+  const handleGoToEarnPage = () => {
+    Router.push(routes.EARN);
+  };
+
   return (
     <div className={classes.root}>
       <Navbar pageTitle="earn.dog" parentClasses={classes} />
@@ -59,7 +65,7 @@ const Shell = ({ children, authUser }) => {
       >
         <div className={classes.toolbar} />
         <List>
-          <ListItem button key="Earn">
+          <ListItem button key="Earn" href="/earn" onClick={handleGoToEarnPage}>
             <ListItemIcon>
               <MonetizationOnOutlinedIcon />
             </ListItemIcon>
@@ -77,18 +83,18 @@ const Shell = ({ children, authUser }) => {
         <Divider />
         {!authUser && (
           <List>
-            <ListItem button key="Log In" component={Link} href="/signin">
+            <ListItem button key="Sign In" href="/signin">
               <ListItemIcon>
                 <VpnKeyRoundedIcon />
               </ListItemIcon>
-              <ListItemText primary="Log In" />
+              <ListItemText primary="Sign In" />
             </ListItem>
           </List>
         )}
 
         {authUser && (
           <List>
-            <ListItem button key="Profile" component={Link} href="/profile">
+            <ListItem button key="Profile" href="/profile">
               <ListItemIcon>
                 <AccountBoxRoundedIcon />
               </ListItemIcon>
