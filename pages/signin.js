@@ -5,6 +5,7 @@ import { AppWithAuthentication } from "../src/components/App";
 import { auth, provider } from "../src/firebase/firebase";
 import { db } from "../src/firebase";
 import * as routes from "../src/constants/routes";
+import Button from "@material-ui/core/Button";
 
 const SignInPage = () => (
   <AppWithAuthentication>
@@ -58,7 +59,15 @@ class SignInForm extends Component {
   };
 
   render() {
-    return <button onClick={this.onClick}>Sign In with Google</button>;
+    return (
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={this.onClick}
+      >
+        Sign In with Google
+      </Button>
+    );
   }
 }
 
