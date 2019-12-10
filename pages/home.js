@@ -1,15 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 
-import { AppWithAuthorisation } from "../src/components/App";
 import { db } from "../src/firebase";
+import { AppWithAuthorisation } from "../src/components/App";
 
 const fromObjectToList = object =>
   object
     ? Object.keys(object).map(key => ({ ...object[key], index: key }))
     : [];
 
-class HomePage extends Component {
+class HomePage extends React.Component {
   componentDidMount() {
     const { onSetUsers } = this.props;
 

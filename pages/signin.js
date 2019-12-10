@@ -1,11 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import Router from "next/router";
 
+import Button from "@material-ui/core/Button";
 import { AppWithAuthentication } from "../src/components/App";
 import { auth, provider } from "../src/firebase/firebase";
 import { db } from "../src/firebase";
 import * as routes from "../src/constants/routes";
-import Button from "@material-ui/core/Button";
+
 
 const SignInPage = () => (
   <AppWithAuthentication>
@@ -23,7 +24,7 @@ const INITIAL_STATE = {
   error: null
 };
 
-class SignInForm extends Component {
+class SignInForm extends React.Component {
   constructor(props) {
     super(props);
 

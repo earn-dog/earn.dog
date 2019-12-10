@@ -1,23 +1,26 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Drawer from "@material-ui/core/Drawer";
-import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
+import Router from "next/router";
 import { connect } from "react-redux";
+
+import {
+  Drawer,
+  List,
+  Divider,
+  ListItem,
+  ListItemIcon,
+  ListItemText
+} from "@material-ui/core";
+import Navbar from "../Navbar";
+
 import MonetizationOnOutlinedIcon from "@material-ui/icons/MonetizationOnOutlined";
 import AccountBalanceWalletRoundedIcon from "@material-ui/icons/AccountBalanceWalletRounded";
 import AccountBoxRoundedIcon from "@material-ui/icons/AccountBoxRounded";
-
 import VpnKeyRoundedIcon from "@material-ui/icons/VpnKeyRounded";
 import ExitToAppRoundedIcon from "@material-ui/icons/ExitToAppRounded";
-import Navbar from "../Navbar";
 
-import Router from "next/router";
+import { makeStyles } from "@material-ui/core/styles";
+
 import * as routes from "../../constants/routes";
-
 import { auth } from "../../firebase/firebase";
 
 const drawerWidth = 180;

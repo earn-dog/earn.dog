@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+import Router from "next/router";
 
 import {
   AppBar,
@@ -6,14 +8,11 @@ import {
   Typography,
   IconButton,
   MenuItem,
-  Menu,
-  Link
+  Menu
 } from "@material-ui/core";
-import { connect } from "react-redux";
-
 import AccountCircle from "@material-ui/icons/AccountCircle";
+
 import { auth } from "../../firebase/firebase";
-import Router from "next/router";
 import * as routes from "../../constants/routes";
 
 const Navbar = ({ pageTitle, parentClasses, authUser }) => {
