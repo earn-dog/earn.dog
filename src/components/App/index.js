@@ -1,15 +1,14 @@
 import React from "react";
 import { compose } from "recompose";
 
-import Navigation from "../Navigation";
+// import Navigation from "../Navigation";
+import Shell from "../Shell";
 import withAuthentication from "../Session/withAuthentication";
 import withAuthorisation from "../Session/withAuthorisation";
 
 const App = ({ children }) => (
   <div className="app">
-    <Navigation />
-    <hr />
-    {children}
+    <Shell>{children}</Shell>
   </div>
 );
 const AppWithAuthentication = compose(

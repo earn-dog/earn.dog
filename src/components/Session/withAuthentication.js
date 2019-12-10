@@ -8,9 +8,13 @@ const withAuthentication = Component => {
     componentDidMount() {
       const { onSetAuthUser } = this.props;
 
-      firebase.auth.onAuthStateChanged(authUser => {
+      this.unsubscribeFirebase = firebase.auth.onAuthStateChanged(authUser => {
         authUser ? onSetAuthUser(authUser) : onSetAuthUser(null);
       });
+    }
+
+    componentWillUnmount() {
+      this.unsubscribeFirebase();
     }
 
     render() {

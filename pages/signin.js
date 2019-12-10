@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import Router from "next/router";
 
 import { AppWithAuthentication } from "../src/components/App";
@@ -22,7 +22,7 @@ const INITIAL_STATE = {
   error: null
 };
 
-class SignInForm extends React.Component {
+class SignInForm extends Component {
   constructor(props) {
     super(props);
 

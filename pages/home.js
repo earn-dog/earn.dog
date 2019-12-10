@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { AppWithAuthorisation } from "../src/components/App";
@@ -9,7 +9,7 @@ const fromObjectToList = object =>
     ? Object.keys(object).map(key => ({ ...object[key], index: key }))
     : [];
 
-class HomePage extends React.Component {
+class HomePage extends Component {
   componentDidMount() {
     const { onSetUsers } = this.props;
 
@@ -36,7 +36,7 @@ const UserList = ({ users }) => (
   <div>
     <h2>List of App User IDs (Saved on Sign Up in Firebase Database)</h2>
     {users.map(user => (
-      <div key={user.index}>{user.index}</div>
+      <div key={user.index}>{user.email}</div>
     ))}
   </div>
 );
