@@ -57,6 +57,10 @@ const Shell = ({ children, authUser }) => {
     Router.push(routes.SIGN_IN);
   };
 
+  const handleGoToWithdrawPage = () => {
+    Router.push(routes.WITHDRAW);
+  };
+
   const handleGoToProfilePage = () => {
     Router.push(routes.PROFILE);
   };
@@ -80,7 +84,12 @@ const Shell = ({ children, authUser }) => {
             <ListItemText primary="Earn" />
           </ListItem>
 
-          <ListItem button key="Withdraw">
+          <ListItem
+            button
+            key="Withdraw"
+            href="/withdraw"
+            onClick={handleGoToWithdrawPage}
+          >
             <ListItemIcon>
               <AccountBalanceWalletRoundedIcon />
             </ListItemIcon>
