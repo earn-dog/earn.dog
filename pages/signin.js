@@ -7,10 +7,9 @@ import { auth, provider } from "../src/firebase/firebase";
 import { db } from "../src/firebase";
 import * as routes from "../src/constants/routes";
 
-
 const SignInPage = () => (
   <AppWithAuthentication>
-    <h1>SignIn</h1>
+    <h1>Sign In</h1>
     <p>Earning points is just a click away</p>
     <SignInForm />
   </AppWithAuthentication>
@@ -62,11 +61,7 @@ class SignInForm extends React.Component {
 
   render() {
     return (
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={this.onClick}
-      >
+      <Button variant="contained" color="primary" onClick={this.onClick}>
         Sign In with Google
       </Button>
     );
