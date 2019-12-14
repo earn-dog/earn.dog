@@ -7,7 +7,7 @@ const ProfilePage = ({ authUser }) => {
   return (
     <AppWithAuthorisation>
       <h1>{authUser ? authUser.displayName : null}</h1>
-      <b>{authUser ? authUser.email : null}</b>
+      <b>Email: {authUser ? authUser.email : null}</b>
     </AppWithAuthorisation>
   );
 };

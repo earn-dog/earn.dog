@@ -7,6 +7,7 @@ class WithdrawPage extends React.Component {
     return (
       <AppWithAuthorisation>
         <h1>Withdraw</h1>
+        <p>Coming soon...</p>
       </AppWithAuthorisation>
     );
   }

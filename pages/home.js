@@ -24,9 +24,11 @@ class HomePage extends React.Component {
     return (
       <AppWithAuthorisation>
         <h1>Home</h1>
-        <p>The Home Page is accessible by every signed in user.</p>
+        <p>
+          Welcome back. Take a look at our offer walls to earn credit points.
+        </p>
 
-        {!!users.length && <UserList users={users} />}
+        {/* {!!users.length && <UserList users={users} />} */}
       </AppWithAuthorisation>
     );
   }

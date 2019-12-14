@@ -17,14 +17,9 @@ const styles = theme => ({
 
 const LandingPage = ({ classes }) => (
   <AppWithAuthentication>
-    <h1>Landing</h1>
+    <h1>Welcome</h1>
     <p>
-      The Landing Page is open to everyone, even though the user isn't signed
-      in.
-      <br />
-      <Button variant="contained" color="primary" className={classes.button}>
-        This is a material UI button that is rendered using SSR and does nothing
-      </Button>
+        Points mean prizes here at earn.dog, so why not check out some of our offer walls. 
     </p>
   </AppWithAuthentication>
 );
