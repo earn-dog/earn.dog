@@ -11,6 +11,7 @@ import * as routes from "../src/constants/routes";
 const SignInPage = () => (
   <AppWithAuthentication>
     <h1>SignIn</h1>
+    <p>Earning points is just a click away</p>
     <SignInForm />
   </AppWithAuthentication>
 );
