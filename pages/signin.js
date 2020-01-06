@@ -11,6 +11,7 @@ const SignInPage = () => (
   <AppWithAuthentication>
     <h1>Sign In</h1>
     <p>Earning points is just a click away</p>
+    <p>This website uses cookies. Please enable cookies in order to sign in</p>
     <SignInForm />
   </AppWithAuthentication>
 );
