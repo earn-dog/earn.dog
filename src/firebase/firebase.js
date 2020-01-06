@@ -69,7 +69,6 @@ if (!firebase.apps.length) {
 const db = firebase.database();
 const auth = firebase.auth();
 const provider = new firebase.auth.GoogleAuthProvider();
-provider.addScope("profile");
-provider.addScope("email");
+provider.addScope("https://www.googleapis.com/auth/plus.login");
 
 export { db, auth, provider };
