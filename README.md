@@ -1,6 +1,6 @@
 # earn.dog
 
-woof bark woof...
+This is a very informative message about the project
 
 ## Recommended dev tools
 
