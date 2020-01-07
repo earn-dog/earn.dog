@@ -30,29 +30,13 @@ class EnhancedApp extends App {
     }
   }
 
-  renderHead() {
-    return (
-      <Head>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, user-scalable=0, maximum-scale=1, minimum-scale=1"
-        />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
-        />
-        <title>earn.dog</title>
-      </Head>
-    );
-  }
-
   render() {
     const { Component, pageProps, store } = this.props;
     return (
       <>
         <Provider store={store}>
           <ThemeProvider theme={theme}>
-            {this.renderHead()}
+            <title>earn.dog</title>
             <CssBaseline />
             <Shell>
               <Component {...pageProps} />
