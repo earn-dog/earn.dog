@@ -34,7 +34,7 @@ class SignInForm extends React.Component {
 
   onClick = () => {
     auth
-      .signInWithPopup(provider)
+      .signInWithRedirect(provider)
       .then(({ user }) => {
         console.log(user);
 
