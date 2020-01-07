@@ -73,7 +73,11 @@ const useStyles = makeStyles(theme => ({
   },
   rightAlign: {
     marginLeft: "auto",
-    marginRight: -12
+    marginRight: -12,
+    cursor: "pointer"
+  },
+  hoverCursor: {
+    cursor: "pointer"
   }
 }));
 
@@ -101,11 +105,21 @@ const Shell = ({ children, authUser }) => {
     setMobileOpen(!mobileOpen);
   }
 
+  function handleGoToHomePage() {
+    Router.push(routes.HOME);
+  }
+
   const drawer = (
     <>
       <AppBar position="static">
         <Toolbar className={classes.earndogLogoContainer}>
-          <img src="/images/logo/dog.png" alt="earn.dog logo" height="75rem" />
+          <img
+            src="/images/logo/dog.png"
+            alt="earn.dog logo"
+            height="120rem"
+            onClick={handleGoToHomePage}
+            className={classes.hoverCursor}
+          />
         </Toolbar>
       </AppBar>
 
@@ -186,7 +200,7 @@ const Shell = ({ children, authUser }) => {
             <MenuIcon />
           </IconButton>
           <div className={classes.rightAlign}>
-            {authUser && <ProfileIcon />}
+            {authUser && <ProfileIcon className={classes.hoverCursor} />}
             {!authUser && (
               <Button color="inherit" onClick={handleGoToSignInPage}>
                 Sign In
