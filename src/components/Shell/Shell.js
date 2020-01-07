@@ -62,7 +62,7 @@ const useStyles = makeStyles(theme => ({
     width: drawerWidth
   },
   appBar: {
-    background: "linear-gradient(45deg,  #ff4d73 30%, #FF8E53 90%)",
+    background: "linear-gradient(45deg,  #FF8E53 30%, #ff4d73 90%)",
     marginLeft: drawerWidth,
     [theme.breakpoints.up("md")]: {
       width: `calc(100% - ${drawerWidth}px)`
