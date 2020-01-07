@@ -1,6 +1,6 @@
 # earn.dog
 
-This is a very informative message about the project
+Useful information goes here.. or something
 
 ## Recommended dev tools
 
