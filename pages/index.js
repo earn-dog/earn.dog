@@ -18,8 +18,8 @@ const LandingPage = ({ classes }) => (
   <AppWithAuthentication>
     <h1>Welcome</h1>
     <p>
-        This is a staging message for testing.
-        Points mean prizes here at earn.dog, so why not check out some of our offer walls. 
+      Points mean prizes here at earn.dog, so why not check out some of our
+      offer walls.
     </p>
   </AppWithAuthentication>
 );
