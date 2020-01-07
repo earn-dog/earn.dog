@@ -66,7 +66,8 @@ const useStyles = makeStyles(theme => ({
     marginLeft: drawerWidth,
     [theme.breakpoints.up("md")]: {
       width: `calc(100% - ${drawerWidth}px)`
-    }
+    },
+    flexShrink: 0
   },
   earndogLogoContainer: {
     background: "linear-gradient(45deg, #ff4d73 30%, #FF8E53 90%)",
