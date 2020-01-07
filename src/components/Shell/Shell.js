@@ -12,7 +12,8 @@ import {
   Hidden,
   AppBar,
   Toolbar,
-  IconButton
+  IconButton,
+  Button
 } from "@material-ui/core";
 import { ProfileIcon } from "../index";
 
@@ -35,8 +36,11 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     padding: theme.spacing(3)
   },
-  container: {
+  root: {
     display: "flex"
+  },
+  container: {
+    flexGrow: 1
   },
   toolbar: theme.mixins.toolbar,
   drawer: {
@@ -53,8 +57,7 @@ const useStyles = makeStyles(theme => ({
     marginLeft: drawerWidth,
     [theme.breakpoints.up("md")]: {
       width: `calc(100% - ${drawerWidth}px)`
-    },
-    flexShrink: 0
+    }
   },
   earndogLogoContainer: {
     background: "linear-gradient(45deg, #ff4d73 30%, #FF8E53 90%)",
@@ -67,6 +70,10 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up("md")]: {
       display: "none"
     }
+  },
+  rightAlign: {
+    marginLeft: "auto",
+    marginRight: -12
   }
 }));
 
@@ -99,8 +106,6 @@ const Shell = ({ children, authUser }) => {
       <AppBar position="static">
         <Toolbar className={classes.earndogLogoContainer}>
           <img src="/images/logo/dog.png" alt="earn.dog logo" height="75rem" />
-          <br />
-          {authUser && <ProfileIcon />}
         </Toolbar>
       </AppBar>
 
@@ -168,7 +173,7 @@ const Shell = ({ children, authUser }) => {
   );
 
   return (
-    <div className={classes.container}>
+    <div className={classes.root}>
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <IconButton
@@ -180,6 +185,14 @@ const Shell = ({ children, authUser }) => {
           >
             <MenuIcon />
           </IconButton>
+          <div className={classes.rightAlign}>
+            {authUser && <ProfileIcon />}
+            {!authUser && (
+              <Button color="inherit" onClick={handleGoToSignInPage}>
+                Sign In
+              </Button>
+            )}
+          </div>
         </Toolbar>
       </AppBar>
 
