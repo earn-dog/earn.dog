@@ -1,31 +1,47 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import Router from "next/router";
 
-import { withStyles } from "@material-ui/core/styles";
+import { Button } from "@material-ui/core";
 
+import * as routes from "../src/constants/routes";
 import { AppWithAuthentication } from "../src/components/App";
 
-const styles = theme => ({
-  button: {
-    margin: theme.spacing(2)
-  },
-  input: {
-    display: "none"
-  }
-});
-
-const LandingPage = ({ classes }) => (
+const LandingPage = ({ authUser }) => (
   <AppWithAuthentication>
     <h1>Welcome</h1>
     <p>
       Points mean prizes here at earn.dog, so why not check out some of our
       offer walls.
     </p>
+    {!authUser && (
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => {
+          Router.push(routes.SIGN_IN);
+        }}
+      >
+        Sign in to start earning
+      </Button>
+    )}
+
+    {authUser && (
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => {
+          Router.push(routes.EARN);
+        }}
+      >
+        Start earning
+      </Button>
+    )}
   </AppWithAuthentication>
 );
 
-LandingPage.propTypes = {
-  classes: PropTypes.object.isRequired
-};
+const mapStateToProps = state => ({
+  authUser: state.sessionState.authUser
+});
 
-export default withStyles(styles)(LandingPage);
+export default connect(mapStateToProps)(LandingPage);
