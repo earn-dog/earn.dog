@@ -106,7 +106,7 @@ const Shell = ({ children, authUser }) => {
   }
 
   function handleGoToHomePage() {
-    Router.push(routes.HOME);
+    Router.push(routes.LANDING);
   }
 
   const drawer = (
