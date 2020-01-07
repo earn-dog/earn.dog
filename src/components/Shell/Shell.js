@@ -8,15 +8,20 @@ import {
   Divider,
   ListItem,
   ListItemIcon,
-  ListItemText
+  ListItemText,
+  Hidden,
+  AppBar,
+  Toolbar,
+  IconButton
 } from "@material-ui/core";
-import Navbar from "../Navbar";
+import { ProfileIcon } from "../index";
 
 import MonetizationOnOutlinedIcon from "@material-ui/icons/MonetizationOnOutlined";
 import AccountBalanceWalletRoundedIcon from "@material-ui/icons/AccountBalanceWalletRounded";
 import AccountBoxRoundedIcon from "@material-ui/icons/AccountBoxRounded";
 import VpnKeyRoundedIcon from "@material-ui/icons/VpnKeyRounded";
 import ExitToAppRoundedIcon from "@material-ui/icons/ExitToAppRounded";
+import MenuIcon from "@material-ui/icons/Menu";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -46,11 +51,40 @@ const useStyles = makeStyles(theme => ({
   title: {
     flexGrow: 1
   },
-  toolbar: theme.mixins.toolbar
+  toolbar: theme.mixins.toolbar,
+  drawer: {
+    [theme.breakpoints.up("md")]: {
+      width: drawerWidth,
+      flexShrink: 0
+    }
+  },
+  drawerPaper: {
+    width: drawerWidth
+  },
+  appBar: {
+    background: "linear-gradient(45deg,  #FF8E53 30%, #ff4d73 90%)",
+    marginLeft: drawerWidth,
+    [theme.breakpoints.up("md")]: {
+      width: `calc(100% - ${drawerWidth}px)`
+    }
+  },
+  earndogLogoContainer: {
+    background: "linear-gradient(45deg, #ff4d73 30%, #FF8E53 90%)",
+    justifyContent: "center",
+    flexDirection: "column",
+    height: "15rem"
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+    [theme.breakpoints.up("md")]: {
+      display: "none"
+    }
+  }
 }));
 
 const Shell = ({ children, authUser }) => {
   const classes = useStyles();
+  const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleGoToEarnPage = () => {
     Router.push(routes.EARN);
@@ -68,39 +102,41 @@ const Shell = ({ children, authUser }) => {
     Router.push(routes.PROFILE);
   };
 
-  return (
-    <div className={classes.root}>
-      <Navbar pageTitle="earn.dog" parentClasses={classes} />
-      <Drawer
-        className={classes.drawer}
-        variant="permanent"
-        classes={{
-          paper: classes.drawerPaper
-        }}
-      >
-        <div className={classes.toolbar} />
-        <List>
-          <ListItem button key="Earn" href="/earn" onClick={handleGoToEarnPage}>
-            <ListItemIcon>
-              <MonetizationOnOutlinedIcon />
-            </ListItemIcon>
-            <ListItemText primary="Earn" />
-          </ListItem>
+  function handleDrawerToggle() {
+    setMobileOpen(!mobileOpen);
+  }
 
-          <ListItem
-            button
-            key="Withdraw"
-            href="/withdraw"
-            onClick={handleGoToWithdrawPage}
-          >
-            <ListItemIcon>
-              <AccountBalanceWalletRoundedIcon />
-            </ListItemIcon>
-            <ListItemText primary="Withdraw" />
-          </ListItem>
-        </List>
+  const drawer = (
+    <>
+      <AppBar position="static">
+        <Toolbar className={classes.earndogLogoContainer}>
+          <img src="/images/logo/dog.png" alt="earn.dog logo" height="75rem" />
+          <br />
+          {authUser && <ProfileIcon />}
+        </Toolbar>
+      </AppBar>
 
-        <Divider />
+      <List>
+        <ListItem button key="Earn" href="/earn" onClick={handleGoToEarnPage}>
+          <ListItemIcon>
+            <MonetizationOnOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText primary="Earn" />
+        </ListItem>
+
+        <ListItem
+          button
+          key="Withdraw"
+          href="/withdraw"
+          onClick={handleGoToWithdrawPage}
+        >
+          <ListItemIcon>
+            <AccountBalanceWalletRoundedIcon />
+          </ListItemIcon>
+          <ListItemText primary="Withdraw" />
+        </ListItem>
+
+        <Divider variant="middle" />
         {!authUser && (
           <List>
             <ListItem
@@ -139,7 +175,56 @@ const Shell = ({ children, authUser }) => {
             </ListItem>
           </List>
         )}
-      </Drawer>
+      </List>
+    </>
+  );
+
+  return (
+    <div className={classes.root}>
+      <AppBar position="fixed" className={classes.appBar}>
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            className={classes.menuButton}
+          >
+            <MenuIcon />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+
+      <nav className={classes.drawer} aria-label="sidebar">
+        <Hidden mdUp>
+          <Drawer
+            variant="temporary"
+            anchor={classes.direction === "rtl" ? "right" : "left"}
+            open={mobileOpen}
+            onClose={handleDrawerToggle}
+            classes={{
+              paper: classes.drawerPaper
+            }}
+            ModalProps={{
+              keepMounted: true // Better open performance on mobile.
+            }}
+          >
+            {drawer}
+          </Drawer>
+        </Hidden>
+        <Hidden smDown>
+          <Drawer
+            classes={{
+              paper: classes.drawerPaper
+            }}
+            variant="permanent"
+            open
+          >
+            {drawer}
+          </Drawer>
+        </Hidden>
+      </nav>
+
       <main className={classes.content}>
         <div className={classes.toolbar} />
         {children}
