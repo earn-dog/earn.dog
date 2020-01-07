@@ -31,25 +31,12 @@ import { auth } from "../../firebase/firebase";
 const drawerWidth = 180;
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    display: "flex"
-  },
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0
-  },
-  drawerPaper: {
-    width: drawerWidth
-  },
   content: {
     flexGrow: 1,
     padding: theme.spacing(3)
   },
-  title: {
-    flexGrow: 1
+  container: {
+    display: "flex"
   },
   toolbar: theme.mixins.toolbar,
   drawer: {
@@ -181,7 +168,7 @@ const Shell = ({ children, authUser }) => {
   );
 
   return (
-    <div className={classes.root}>
+    <div className={classes.container}>
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <IconButton
