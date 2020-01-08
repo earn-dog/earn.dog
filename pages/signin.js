@@ -32,12 +32,12 @@ class SignInForm extends React.Component {
     this.state = { ...INITIAL_STATE };
   }
 
-  onClick = () => {
-    auth
-      .signInWithRedirect(provider)
-      .then(({ user }) => {
+  componentDidMount() {
+    auth.onAuthStateChanged(user => {
+      if (user) {
         console.log(user);
 
+        // add them to the db and then redirect
         db.doCreateUser(
           user.uid,
           user.email,
@@ -54,10 +54,12 @@ class SignInForm extends React.Component {
           });
 
         Router.push(routes.HOME);
-      })
-      .catch(error => {
-        this.setState(updateByPropertyName("error", error));
-      });
+      }
+    });
+  }
+
+  onClick = () => {
+    auth.signInWithRedirect(provider);
   };
 
   render() {

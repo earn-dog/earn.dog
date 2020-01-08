@@ -114,6 +114,11 @@ const Shell = ({ children, authUser }) => {
     if (mobileOpen) handleDrawerToggle();
   };
 
+  const handleSignOut = () => {
+    auth.signOut();
+    if (mobileOpen) handleDrawerToggle();
+  };
+
   const drawer = (
     <>
       <AppBar position="static">
@@ -179,7 +184,7 @@ const Shell = ({ children, authUser }) => {
               <ListItemText primary="Profile" />
             </ListItem>
 
-            <ListItem button key="Sign Out" onClick={() => auth.signOut()}>
+            <ListItem button key="Sign Out" onClick={handleSignOut}>
               <ListItemIcon>
                 <ExitToAppRoundedIcon />
               </ListItemIcon>
