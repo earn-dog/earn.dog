@@ -101,13 +101,13 @@ const Shell = ({ children, authUser }) => {
     Router.push(routes.PROFILE);
   };
 
-  function handleDrawerToggle() {
+  const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
-  }
+  };
 
-  function handleGoToHomePage() {
+  const handleGoToHomePage = () => {
     Router.push(routes.LANDING);
-  }
+  };
 
   const drawer = (
     <>
