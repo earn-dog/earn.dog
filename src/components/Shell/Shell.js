@@ -87,18 +87,22 @@ const Shell = ({ children, authUser }) => {
 
   const handleGoToEarnPage = () => {
     Router.push(routes.EARN);
+    if (mobileOpen) handleDrawerToggle();
   };
 
   const handleGoToSignInPage = () => {
     Router.push(routes.SIGN_IN);
+    if (mobileOpen) handleDrawerToggle();
   };
 
   const handleGoToWithdrawPage = () => {
     Router.push(routes.WITHDRAW);
+    if (mobileOpen) handleDrawerToggle();
   };
 
   const handleGoToProfilePage = () => {
     Router.push(routes.PROFILE);
+    if (mobileOpen) handleDrawerToggle();
   };
 
   const handleDrawerToggle = () => {
@@ -107,6 +111,7 @@ const Shell = ({ children, authUser }) => {
 
   const handleGoToHomePage = () => {
     Router.push(routes.LANDING);
+    if (mobileOpen) handleDrawerToggle();
   };
 
   const drawer = (
